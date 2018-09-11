@@ -65,7 +65,6 @@ if ( !class_exists( 'EXMSPL_Admin' ) ) {
             require_once( EXMSPL_PLUGIN_DIR . 'admin/class-metaboxes.php' ); 
             require_once( EXMSPL_PLUGIN_DIR . 'admin/class-geocode.php' );
             require_once( EXMSPL_PLUGIN_DIR . 'admin/class-settings.php' );
-            // require_once( EXMSPL_PLUGIN_DIR . 'admin/data-export.php' );
 		}
         
         /**
@@ -235,24 +234,6 @@ if ( !class_exists( 'EXMSPL_Admin' ) ) {
                 }
             }
         }
-        
-        // /**
-        //  * Check if we can use a font for the plugin icon.
-        //  * 
-        //  * This is supported by WP 3.8 or higher
-        //  *
-        //  * @return void
-        //  */
-        // private function check_icon_font_usage() {
-                        
-        //     global $wp_version;
-
-        //     if ( ( version_compare( $wp_version, '3.8', '>=' ) == TRUE ) ) {
-        //         $min = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-                
-        //         wp_enqueue_style( 'exmspl-admin-38', plugins_url( '/css/style-3.8'. $min .'.css', __FILE__ ), false );
-        //     } 
-        // }
                 
         /**
          * The text messages used in exmspl-admin.js.
@@ -328,9 +309,6 @@ if ( !class_exists( 'EXMSPL_Admin' ) ) {
             
             // Always load the main js admin file to make sure the "dismiss" link in the location notice works.
             wp_enqueue_script( 'exmspl-admin-js', plugins_url( '/js/exmspl-admin'. $min .'.js', __FILE__ ), array( 'jquery' ), EXMSPL_VERSION_NUM, true );				
-
-            // $this->maybe_show_pointer();
-            // $this->check_icon_font_usage();
             
             // Only enqueue the rest of the css/js files if we are on a page that belongs to the practitioner locator.
             if ( ( get_post_type() == 'exmspl_practitioners' ) || ( isset( $_GET['post_type'] ) && ( $_GET['post_type'] == 'exmspl_practitioners' ) ) ) {
